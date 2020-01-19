@@ -4,6 +4,7 @@ import importComponent from 'react-imported-component';
 import Home from './pages/Home.jsx'
 import LoadingComponent from './pages/Loading'
 import ErrorComponent from './pages/Error'
+import {GlobalStyles} from "./styles";
 const About = importComponent(() => import("./pages/About"), {
     LoadingComponent,
     ErrorComponent
