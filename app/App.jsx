@@ -1,6 +1,6 @@
 import React from 'react'
 import {Helmet} from 'react-helmet-async'
-import { Global Styles } from './styles'
+import { GlobalStyles } from './styles'
 const App = () => (
     <React.Fragment>
         <Helmet>
