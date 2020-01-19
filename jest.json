@@ -24,5 +24,5 @@
   "collectCoverageFrom" : [
     "**/*.{js,jsx}"
   ],
-  "setupTestFrameworkScriptFile": "<rootDir>/__tests__/setup.js"
+  "setupFilesAfterEnv": ["<rootDir>/__tests__/setup.js"]
 }
