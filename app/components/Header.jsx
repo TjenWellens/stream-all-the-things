@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 import styled from 'styled-components'
-import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom'
 const Header = styled.header`
   z-index: 100;
   position: fixed;
@@ -28,21 +28,19 @@ const MenuLink = styled.li`
   text-decoration: none;
 `
 export default () => (
-    <Header>
-        <Brand>Stream all the things!</Brand>
-        <Menu>
-            <MenuLink>
-                <NavLink
-                    to="/"
-                    exact activeClassName="active"
-                >Home</NavLink>
-            </MenuLink>
-            <MenuLink>
-                <NavLink
-                    to="/about"
-                    exact activeClassName="active"
-                >About</NavLink>
-            </MenuLink>
-        </Menu>
-    </Header>
+  <Header>
+    <Brand>Stream all the things!</Brand>
+    <Menu>
+      <MenuLink>
+        <NavLink to='/' exact activeClassName='active'>
+          Home
+        </NavLink>
+      </MenuLink>
+      <MenuLink>
+        <NavLink to='/about' exact activeClassName='active'>
+          About
+        </NavLink>
+      </MenuLink>
+    </Menu>
+  </Header>
 )
