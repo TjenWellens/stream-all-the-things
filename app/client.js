@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import App from './App'
 import {HelmetProvider} from 'react-helmet-async';
 import { BrowserRouter } from 'react-router-dom'
+import {GlobalStyles} from "./styles";
 
 const element = document.getElementById('app')
 const app = (
