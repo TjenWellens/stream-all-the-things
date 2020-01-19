@@ -12,15 +12,15 @@ import { getHTMLFragments } from './client'
 const getApplicationStream = (originalUrl, context) => {
   const helmetContext = {}
   const app = (
-      <HelmetProvider context={helmetContext}>
-        <StaticRouter location={originalUrl} context={context}>
-          <App />
-        </StaticRouter>
-      </HelmetProvider>
+    <HelmetProvider context={helmetContext}>
+      <StaticRouter location={originalUrl} context={context}>
+        <App />
+      </StaticRouter>
+    </HelmetProvider>
   )
   const sheet = new ServerStyleSheet()
   return sheet.interleaveWithNodeStream(
-      renderToNodeStream(sheet.collectStyles(app))
+    renderToNodeStream(sheet.collectStyles(app))
   )
 }
 export function write (data) {
@@ -30,10 +30,10 @@ export function write (data) {
 // it just means a function which returns another function
 // which has access to values from a closure
 export const end = endingHTMLFragment =>
-    function end () {
-      this.queue(endingHTMLFragment)
-      this.queue(null)
-    }
+  function end () {
+    this.queue(endingHTMLFragment)
+    this.queue(null)
+  }
 export const ssr = getApplicationStream => (req, res) => {
   try {
     // If you were using Apollo, you could fetch data with this

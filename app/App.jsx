@@ -10,7 +10,7 @@ const About = importComponent(() => import('./pages/About'), {
   LoadingComponent,
   ErrorComponent
 })
-export const renderAboutPage = () => <About/>;
+export const renderAboutPage = () => <About />
 const App = () => (
   <React.Fragment>
     <GlobalStyles />
