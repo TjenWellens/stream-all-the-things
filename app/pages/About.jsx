@@ -1,7 +1,8 @@
 import React from 'react'
 import {Helmet} from 'react-helmet-async'
+import Page from '../components/Page.jsx'
 const About = () => (
-    <React.Fragment>
+    <Page>
         <Helmet>
             <title>About Page</title>
         </Helmet>
@@ -9,6 +10,6 @@ const About = () => (
             This is the about page
         </div>
 
-    </React.Fragment>
+    </Page>
 )
 export default About

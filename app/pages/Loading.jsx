@@ -1,7 +1,8 @@
 import React from 'react'
+import Page from '../components/Page.jsx'
 const Loading = () => (
-    <div>
+    <Page>
         Loading...
-    </div>
+    </Page>
 )
 export default Loading
