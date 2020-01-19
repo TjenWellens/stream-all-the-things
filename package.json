@@ -1,0 +1,13 @@
+{
+  "name": "stream-all-the-things",
+  "version": "1.0.0",
+  "description": "https://hackernoon.com/move-over-next-js-and-webpack-ba367f07545",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
