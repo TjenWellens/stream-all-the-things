@@ -10,13 +10,14 @@ const About = importComponent(() => import('./pages/About'), {
   LoadingComponent,
   ErrorComponent
 })
+export const renderAboutPage = () => <About/>;
 const App = () => (
   <React.Fragment>
     <GlobalStyles />
     <Header />
     <Switch>
       <Route exact path='/' component={Home} />
-      <Route exact path='/about' render={() => <About />} />
+      <Route exact path='/about' render={renderAboutPage} />
       <Redirect to='/' />
     </Switch>
   </React.Fragment>
