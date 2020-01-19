@@ -5,8 +5,8 @@ import ssr from './lib/ssr'
 
 // Expose the public directory as /dist and point to the browser version
 server.use(
-    '/dist/client',
-    serveStatic(path.resolve(process.cwd(), 'dist', 'client'))
+  '/dist/client',
+  serveStatic(path.resolve(process.cwd(), 'dist', 'client'))
 )
 // Anything unresolved is serving the application and let
 // react-router do the routing!
