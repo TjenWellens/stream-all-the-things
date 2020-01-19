@@ -33,7 +33,7 @@
     "lint-staged": "^9.5.0",
     "nodemon": "^2.0.2",
     "parcel-bundler": "^1.12.4",
-    "prettier-standard": "^16.1.0",
+    "prettier-standard": "9.1.1",
     "react-hot-loader": "^4.12.18",
     "rimraf": "^3.0.0"
   },
