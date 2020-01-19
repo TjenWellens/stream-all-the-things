@@ -27,7 +27,7 @@
     "rimraf": "^3.0.0"
   },
   "scripts": {
-    "dev": "npm run generate-imported-components && parcel app/index.html",
+    "dev": "npm run generate-imported-components && parcel app/index.html --hmr-port 1235",
     "dev:server": "nodemon -e js,jsx,html --ignore dist --ignore app/imported.js --exec 'npm run build && npm run start'",
     "start": "node dist/server",
     "build": "rimraf dist && npm run generate-imported-components && npm run create-bundles",
