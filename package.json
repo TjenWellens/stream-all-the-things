@@ -21,8 +21,11 @@
     "@babel/polyfill": "^7.8.3",
     "concurrently": "^5.0.2",
     "cross-env": "^6.0.3",
+    "husky": "^4.0.10",
+    "lint-staged": "^9.5.0",
     "nodemon": "^2.0.2",
     "parcel-bundler": "^1.12.4",
+    "prettier-standard": "^16.1.0",
     "react-hot-loader": "^4.12.18",
     "rimraf": "^3.0.0"
   },
@@ -35,7 +38,19 @@
     "create-bundle:client": "cross-env BABEL_ENV=client parcel build app/index.html -d dist/client --public-url /dist/client",
     "create-bundle:server": "cross-env BABEL_ENV=server parcel build server/index.js -d dist/server --public-url /dist --target=node",
     "generate-imported-components": "imported-components app app/imported.js",
-    "start": "node dist/server"
+    "format": "prettier-standard 'app/**/*.js' 'app/**/*.jsx' 'server/**/*.js'"
+  },
+  "lint-staged": {
+    "linters": {
+      "**/*.js": [
+        "prettier-standard",
+        "git add"
+      ],
+      "**/*.jsx": [
+        "prettier-standard",
+        "git add"
+      ]
+    }
   },
   "author": "",
   "license": "ISC"
