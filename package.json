@@ -3,8 +3,18 @@
   "version": "1.0.0",
   "description": "https://hackernoon.com/move-over-next-js-and-webpack-ba367f07545",
   "main": "index.js",
-  "dependencies": {},
-  "devDependencies": {},
+  "dependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-helmet-async": "^1.0.4",
+    "react-imported-component": "^6.2.1",
+    "react-router": "^5.1.2",
+    "styled-components": "^5.0.0"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4",
+    "react-hot-loader": "^4.12.18"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
