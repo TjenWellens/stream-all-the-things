@@ -1,11 +1,13 @@
 import React from 'react'
 import {Helmet} from 'react-helmet-async'
+import { Global Styles } from './styles'
 const App = () => (
     <React.Fragment>
         <Helmet>
             <title>Home Page</title>
         </Helmet>
         <div>
+            <GlobalStyles />
             Follow me at <a href="https://medium.com/@patrickleet">@patrickleet</a>
         </div>
 
