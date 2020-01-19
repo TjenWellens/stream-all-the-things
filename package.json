@@ -16,6 +16,7 @@
     "react-hot-loader": "^4.12.18"
   },
   "scripts": {
+    "dev": "parcel app/index.html",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
