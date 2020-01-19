@@ -9,48 +9,51 @@ import through from 'through'
 import App from '../../app/App'
 import { getHTMLFragments } from './client'
 // import { getDataFromTree } from 'react-apollo';
-export default (req, res) => {
-  const context = {}
+const getApplicationStream = (originalUrl, context) => {
   const helmetContext = {}
   const app = (
-    <HelmetProvider context={helmetContext}>
-      <StaticRouter location={req.originalUrl} context={context}>
-        <App />
-      </StaticRouter>
-    </HelmetProvider>
+      <HelmetProvider context={helmetContext}>
+        <StaticRouter location={originalUrl} context={context}>
+          <App />
+        </StaticRouter>
+      </HelmetProvider>
   )
+  const sheet = new ServerStyleSheet()
+  return sheet.interleaveWithNodeStream(
+      renderToNodeStream(sheet.collectStyles(app))
+  )
+}
+export function write (data) {
+  this.queue(data)
+}
+// partial application with ES6 is quite succinct
+// it just means a function which returns another function
+// which has access to values from a closure
+export const end = endingHTMLFragment =>
+    function end () {
+      this.queue(endingHTMLFragment)
+      this.queue(null)
+    }
+export const ssr = getApplicationStream => (req, res) => {
   try {
     // If you were using Apollo, you could fetch data with this
     // await getDataFromTree(app);
-    const sheet = new ServerStyleSheet()
-    const stream = sheet.interleaveWithNodeStream(
-      renderToNodeStream(sheet.collectStyles(app))
-    )
+    const context = {}
+    const stream = getApplicationStream(req.originalUrl, context)
     if (context.url) {
-      res.redirect(301, context.url)
-    } else {
-      const [startingHTMLFragment, endingHTMLFragment] = getHTMLFragments({
-        drainHydrateMarks: printDrainHydrateMarks()
-      })
-      res.status(200)
-      res.write(startingHTMLFragment)
-      stream
-        .pipe(
-          through(
-            function write (data) {
-              this.queue(data)
-            },
-            function end () {
-              this.queue(endingHTMLFragment)
-              this.queue(null)
-            }
-          )
-        )
-        .pipe(res)
+      return res.redirect(301, context.url)
     }
+    const [startingHTMLFragment, endingHTMLFragment] = getHTMLFragments({
+      drainHydrateMarks: printDrainHydrateMarks()
+    })
+    res.status(200)
+    res.write(startingHTMLFragment)
+    stream.pipe(through(write, end(endingHTMLFragment))).pipe(res)
   } catch (e) {
     log.error(e)
     res.status(500)
     res.end()
   }
 }
+const defaultSSR = ssr(getApplicationStream)
+export default defaultSSR
