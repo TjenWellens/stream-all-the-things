@@ -4,21 +4,38 @@
   "description": "https://hackernoon.com/move-over-next-js-and-webpack-ba367f07545",
   "main": "index.js",
   "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "express": "^4.17.1",
+    "llog": "^0.2.0",
+    "pino": "^5.16.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet-async": "^1.0.4",
     "react-imported-component": "^6.2.1",
     "react-router": "^5.1.2",
     "react-router-dom": "^5.1.2",
-    "styled-components": "^5.0.0"
+    "styled-components": "^5.0.0",
+    "through": "^2.3.8"
   },
   "devDependencies": {
+    "@babel/polyfill": "^7.8.3",
+    "concurrently": "^5.0.2",
+    "cross-env": "^6.0.3",
+    "nodemon": "^2.0.2",
     "parcel-bundler": "^1.12.4",
-    "react-hot-loader": "^4.12.18"
+    "react-hot-loader": "^4.12.18",
+    "rimraf": "^3.0.0"
   },
   "scripts": {
-    "dev": "parcel app/index.html --hmr-port 1235",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "npm run generate-imported-components && parcel app/index.html",
+    "dev:server": "nodemon -e js,jsx,html --ignore dist --ignore app/imported.js --exec 'npm run build && npm run start'",
+    "start": "node dist/server"
+    "build": "rimraf dist && npm run generate-imported-components && npm run create-bundles",
+    "create-bundles": "concurrently \"npm run create-bundle:client\" \"npm run create-bundle:server\"",
+    "create-bundle:client": "cross-env BABEL_ENV=client parcel build app/index.html -d dist/client --public-url /dist/client",
+    "create-bundle:server": "cross-env BABEL_ENV=server parcel build server/index.js -d dist/server --public-url /dist --target=node",
+    "generate-imported-components": "imported-components app app/imported.js",
+    "start": "node dist/server"
   },
   "author": "",
   "license": "ISC"
