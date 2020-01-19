@@ -12,5 +12,5 @@ const app = (
 ReactDOM.render(app, element)
 //Enable Hot Module Reloading
 if (module.hot) {
-    module.hot.appect();
+    module.hot.accept();
 }
