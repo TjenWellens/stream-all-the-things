@@ -29,7 +29,7 @@
   "scripts": {
     "dev": "npm run generate-imported-components && parcel app/index.html",
     "dev:server": "nodemon -e js,jsx,html --ignore dist --ignore app/imported.js --exec 'npm run build && npm run start'",
-    "start": "node dist/server"
+    "start": "node dist/server",
     "build": "rimraf dist && npm run generate-imported-components && npm run create-bundles",
     "create-bundles": "concurrently \"npm run create-bundle:client\" \"npm run create-bundle:server\"",
     "create-bundle:client": "cross-env BABEL_ENV=client parcel build app/index.html -d dist/client --public-url /dist/client",
