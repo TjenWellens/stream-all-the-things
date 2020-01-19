@@ -10,9 +10,7 @@ const app = (
     </HelmetProvider>
 )
 ReactDOM.render(app, element)
-{
-    //Enable Hot Module Reloading
-    if (module.hot) {
-        module.hot.appect();
-    }
+//Enable Hot Module Reloading
+if (module.hot) {
+    module.hot.appect();
 }
