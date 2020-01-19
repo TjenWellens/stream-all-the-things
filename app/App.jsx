@@ -1,16 +1,13 @@
 import React from 'react'
-import {Helmet} from 'react-helmet-async'
-import { GlobalStyles } from './styles'
+import { Switch, Route, Redirect } from 'react-router-dom'
+import Home from './pages/Home'
 const App = () => (
     <React.Fragment>
-        <Helmet>
-            <title>Home Page</title>
-        </Helmet>
-        <div>
-            <GlobalStyles />
-            Follow me at <a href="https://medium.com/@patrickleet">@patrickleet</a>
-        </div>
-
+        <GlobalStyles />
+        <Switch>
+            <Route exact path="/" component={Home} />
+            <Redirect to="/" />
+        </Switch>
     </React.Fragment>
 )
 export default App
