@@ -20,3 +20,5 @@ const App = () => (
             <Redirect to="/" />
         </Switch>
     </React.Fragment>
+)
+export default App
