@@ -13,6 +13,7 @@ server.use(
 server.get('/*', ssr)
 // Check for PORT environment variable, otherwise fallback on Parcel default port
 const port = process.env.PORT || 1234
-server.listen(port, () => {
+export const onListen = port => () => {
   log.info(`Listening on port ${port}...`)
-})
+}
+server.listen(port, onListen(port))
